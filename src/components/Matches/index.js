@@ -32,9 +32,9 @@ const Matches = () => {
   return (
     <form onSubmit={handleSubmit}>
       <Box>
-        <Box>
-          <InputLabel id="localizacaoLabel">Localização</InputLabel>
-          <Place fontSize="large"/>
+        <Box backgroundColor='#1C1E1F'>
+          <InputLabel id="localizacaoLabel" style={{ color: '#fff' }}>Localização</InputLabel>
+          <Place fontSize="large" style={{ color: '#E8FC0F' }}/>
           <Input
             labelId="localizacaoLabel"
             id="localizacao"
@@ -42,10 +42,10 @@ const Matches = () => {
           />
         </Box>
 
-        <Box>
+        <Box backgroundColor='#1C1E1F'>
           <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
-            <InputLabel id="esporteLabel">Esporte</InputLabel>
-            <SportsSoccer fontSize="large"/>
+            <InputLabel id="esporteLabel" style={{ color: '#fff' }} display='inline-block'>Esporte</InputLabel>
+            <SportsSoccer fontSize="large" style={{ color: '#E8FC0F' }}/>
             <Select
               labelId="esporteLabel"
               id="esporte"
@@ -62,9 +62,9 @@ const Matches = () => {
           </FormControl>
         </Box>
 
-        <Box>
-          <InputLabel id="dataLabel">Data</InputLabel>
-          <CalendarToday fontSize="large"/>
+        <Box backgroundColor='#1C1E1F'>
+          <InputLabel id="dataLabel" style={{ color: '#fff' }}>Data</InputLabel>
+          <CalendarToday fontSize="large" style={{ color: '#E8FC0F' }}/>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
               label="Data"
@@ -75,10 +75,10 @@ const Matches = () => {
           </LocalizationProvider>
         </Box>
 
-        <Box>
+        <Box backgroundColor='#1C1E1F'>
           <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
-            <InputLabel id="intensidadeLabel">Intensidade</InputLabel>
-            <SignalCellularAlt fontSize="large"/>
+            <InputLabel id="intensidadeLabel" style={{ color: '#fff' }}>Intensidade</InputLabel>
+            <SignalCellularAlt fontSize="large"style={{ color: '#E8FC0F' }}/>
             <Select
               labelId="intensidadeLabel"
               id="intensidade"

@@ -5,6 +5,7 @@ import App from './App';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    {document.body.style.backgroundColor='#2A2B2C'}
+    <App/>
   </React.StrictMode>
 );
