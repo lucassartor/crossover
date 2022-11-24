@@ -1,3 +1,9 @@
-import Select from '@material-ui/core/Select';
+import MuiBox from '@mui/material/Box';
+import styled from '@emotion/styled'
 
-export default Select;
+export const Box = styled.MuiBox`
+
+`;
+
+
+export default Box;
