@@ -1,8 +1,9 @@
 import React from 'react';
 import useForm from '../Form/useForm';
 import Input from '@material-ui/core/Input';
-import Select from './StyledComponents';
 import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
+import Select from './StyledComponents';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Place, SportsSoccer, CalendarToday, SignalCellularAltIcon } from '@mui/icons-material';
 
@@ -20,24 +21,32 @@ const Matches = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Place />
-      <Input
-        label="Endereço"
-        type="text"
-      />
-      <SportsSoccer />
-      <Select
-        label="Esporte"
-      />
-      <CalendarToday />
-      <DatePicker
-        label="Data"
-      />
-      <SignalCellularAltIcon />
-      <Select
-        label="Intensidade"
-      />
-      <Button>Enviar</Button>
+      <Box>
+        <Place />
+        <Input
+          label="Endereço"
+          type="text"
+        />
+      </Box>
+      <Box>
+        <SportsSoccer />
+        <Select
+          label="Esporte"
+        />
+      </Box>
+      <Box>
+        <CalendarToday />
+        <DatePicker
+          label="Data"
+        />
+      </Box>
+      <Box>
+        <SignalCellularAltIcon />
+        <Select
+          label="Intensidade"
+        />
+      </Box>
+      <Button>Criar</Button>
     </form>
   );
 };
