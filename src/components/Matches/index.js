@@ -6,14 +6,18 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
-import Box from '@mui/material/Box';
-//import Box from '../Form/StyledComponents';
-//import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+//import Box from '@mui/material/Box';
+import Box from '../Form/StyledComponents';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import TextField from '@mui/material/TextField';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { Place, SportsSoccer, CalendarToday, SignalCellularAlt } from '@mui/icons-material';
 
 const Matches = () => {
   const endereco = useForm();
   const esporte = useForm();
+  const data = useForm();
   const intensidade = useForm();
 
   function handleSubmit(event) {
@@ -28,7 +32,7 @@ const Matches = () => {
   return (
     <form onSubmit={handleSubmit}>
       <Box>
-        <Box flex>
+        <Box>
           <InputLabel id="localizacaoLabel">Localização</InputLabel>
           <Place fontSize="large"/>
           <Input
@@ -38,7 +42,7 @@ const Matches = () => {
           />
         </Box>
 
-        <Box flex>
+        <Box>
           <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
             <InputLabel id="esporteLabel">Esporte</InputLabel>
             <SportsSoccer fontSize="large"/>
@@ -58,15 +62,20 @@ const Matches = () => {
           </FormControl>
         </Box>
 
-        <Box flex>
+        <Box>
           <InputLabel id="dataLabel">Data</InputLabel>
           <CalendarToday fontSize="large"/>
-          {/* <DatePicker
-            labelId="dataLabel"
-          /> */}
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker
+              label="Data"
+              value={data.value}
+              onChange={data.onChange}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </LocalizationProvider>
         </Box>
 
-        <Box flex>
+        <Box>
           <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
             <InputLabel id="intensidadeLabel">Intensidade</InputLabel>
             <SignalCellularAlt fontSize="large"/>
