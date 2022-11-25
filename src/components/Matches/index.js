@@ -31,11 +31,11 @@ const Matches = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Box pt={4} align='center'>
-        <Box display='flex' flexWrap='wrap' gap={1} maxWidth='1200px' alignItens='center'>
+      <Box py={4} align='center' backgroundColor='#343434'>
+        <Box display='flex' flexWrap='wrap' gap={1} maxWidth='1200px' pb={1}>
           <FormCard>
             <InputLabel id="localizacaoLabel" style={{ color: '#fff' }}>Localização</InputLabel>
-            <Place {...iconStyles}/>
+            <Place {...iconStyles}/> <br/>
             <Input
               labelId="localizacaoLabel"
               id="localizacao"
@@ -46,7 +46,7 @@ const Matches = () => {
 
           <FormCard>
               <InputLabel id="esporteLabel" style={{ color: '#fff' }} display='inline-block'>Esporte</InputLabel>
-              <SportsSoccer {...iconStyles}/>
+              <SportsSoccer {...iconStyles}/> <br/>
               <FormControl>
                 <Select
                   labelId="esporteLabel"
@@ -66,22 +66,21 @@ const Matches = () => {
 
           <FormCard>
             <InputLabel id="dataLabel" style={{ color: '#fff' }}>Data</InputLabel>
-            <CalendarToday {...iconStyles}/>
+            <CalendarToday {...iconStyles}/> <br/>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
                 labelId="dataLabel"
-                label="Data"
+                label="Selecione a data"
                 value={data.value || null}
                 onChange={data.onChange}
                 renderInput={(params) => <TextField {...params} />}
-                color='#fff'
               />
             </LocalizationProvider>
           </FormCard>
 
           <FormCard>
               <InputLabel id="intensidadeLabel" style={{ color: '#fff' }}>Intensidade</InputLabel>
-              <SignalCellularAlt {...iconStyles}/>
+              <SignalCellularAlt {...iconStyles}/> <br/>
               <FormControl>
                 <Select
                   labelId="intensidadeLabel"
@@ -99,7 +98,11 @@ const Matches = () => {
               </FormControl>
           </FormCard>
         </Box>
-        <Button align='right'>Criar</Button>
+        <Button
+          variant='contained'
+          size='large'
+          style={{backgroundColor:'#E8FC0F', color:'#000'}}
+        >Criar partida</Button>
       </Box>
     </form>
   );

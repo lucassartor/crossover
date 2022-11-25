@@ -14,7 +14,7 @@ const FormCard = (props) =>
 
 const iconStyles = {
   fontSize: "large",
-  style: { color: '#E8FC0F' },
+  style: { color: '#E8FC0F', padding:20 },
 }
 
 export {FormCard, iconStyles};
