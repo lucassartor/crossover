@@ -14,7 +14,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { Place, SportsSoccer, CalendarToday, SignalCellularAlt } from '@mui/icons-material';
 
-const Matches = ({setMarker}) => {
+const Matches = ({setMatches}) => {
   const localizacao = useForm();
   const esporte = useForm();
   const data = useForm();
@@ -24,7 +24,7 @@ const Matches = ({setMarker}) => {
     event.preventDefault();
     if(localizacao.validate() && esporte.validate() && data.validate() && intensidade.validate()) {
       console.log('Enviar');
-      setMarker(false);
+      setMatches(false);
     }
     else {
       console.log('Não enviar');
@@ -102,12 +102,20 @@ const Matches = ({setMarker}) => {
               </FormControl>
           </FormCard>
         </Box>
-        <Button
-          variant='contained'
-          size='large'
-          style={{backgroundColor:'#E8FC0F', color:'#000'}}
-          onClick={handleSubmit}
-        >Criar partida</Button>
+        <Box display='flex' gap={1} justifyContent='center'>
+          <Button
+            variant='outlined'
+            size='large'
+            style={{borderColor:'#E8FC0F', color:'#E8FC0F'}}
+            onClick={() => setMatches(false)}
+          >Cancelar</Button>
+          <Button
+            variant='contained'
+            size='large'
+            style={{backgroundColor:'#E8FC0F', color:'#000'}}
+            onClick={handleSubmit}
+          >Criar partida</Button>
+        </Box>
       </Box>
     </form>
   );

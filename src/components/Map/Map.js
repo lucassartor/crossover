@@ -2,6 +2,7 @@ import React, {useCallback, useState} from 'react'
 import {GoogleMap, MarkerF, useJsApiLoader} from '@react-google-maps/api';
 import {markers} from "../../db/markers";
 import CustomMarker from "../Marker/CustomMarker";
+import mapStyle from './mapStyle';
 
 const containerStyle = {
   //width: '720px',
@@ -10,7 +11,7 @@ const containerStyle = {
   align:'center'
 };
 
-const Map = ({coords, marker, setMarker}) => {
+const Map = ({coords, setMatches}) => {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: "AIzaSyD9Qx5N762HtFu_ZMnUdrF0_3UyyHlcBio"
@@ -38,11 +39,11 @@ const Map = ({coords, marker, setMarker}) => {
       zoom={2}
       onLoad={onLoad}
       onUnmount={onUnmount}
-      options={{disableDefaultUI: true, zoomControl: true}}
+      options={{styles: mapStyle, disableDefaultUI: true, zoomControl: true}}
     >
-      <MarkerF position={coords} label={"Voce"} icon={""} />
+      <MarkerF position={coords} icon={"https://i.ibb.co/SVfjkt6/Frame-204-1.png"} />
       {markers.map( markerInfo =>
-        <CustomMarker onClick={() => setMarker(true)} position={markerInfo.position} {...markerInfo} />
+        <CustomMarker onClick={() => setMatches(true)} position={markerInfo.position} {...markerInfo} />
       )}
     </GoogleMap>
   ) : <>Carregando mapa...</>

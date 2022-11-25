@@ -4,7 +4,7 @@ import Matches from "./components/Matches";
 
 function App() {
   const [coords, setCoords] = useState(null);
-  const [marker, setMarker] = useState(false);
+  const [matches, setMatches] = useState(false);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
@@ -19,8 +19,8 @@ function App() {
 
   return (
     <>
-      <Map coords={coords} setCoords={setCoords} marker={marker} setMarker={setMarker} />
-      {marker && <Matches setMarker={setMarker}/>}
+      <Map coords={coords} setCoords={setCoords} matches={matches} setMatches={setMatches} />
+      {matches && <Matches setMatches={setMatches}/>}
     </>
   )
 }
