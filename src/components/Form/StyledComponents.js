@@ -1,11 +1,20 @@
-import MuiBox from '@mui/material/Box';
+import Box from '@mui/material/Box';
 
-const Box = (props) =>
-  <MuiBox
+const FormCard = (props) =>
+  <Box
     p={2}
     border={1}
     display='inline-block'
+    backgroundColor='#2A2B2C'
+    style={{ aspectRatio: 4/3 }}
+    minWidth='200px'
+    flexGrow={1}
     {...props}
   />;
 
-export default Box;
+const iconStyles = {
+  fontSize: "large",
+  style: { color: '#E8FC0F' },
+}
+
+export {FormCard, iconStyles};

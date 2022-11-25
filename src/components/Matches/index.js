@@ -6,8 +6,8 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
-//import Box from '@mui/material/Box';
-import Box from '../Form/StyledComponents';
+import Box from '@mui/material/Box';
+import {FormCard, iconStyles} from '../Form/StyledComponents';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import TextField from '@mui/material/TextField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -31,70 +31,75 @@ const Matches = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Box>
-        <Box backgroundColor='#1C1E1F'>
-          <InputLabel id="localizacaoLabel" style={{ color: '#fff' }}>Localização</InputLabel>
-          <Place fontSize="large" style={{ color: '#E8FC0F' }}/>
-          <Input
-            labelId="localizacaoLabel"
-            id="localizacao"
-            type="text"
-          />
-        </Box>
-
-        <Box backgroundColor='#1C1E1F'>
-          <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
-            <InputLabel id="esporteLabel" style={{ color: '#fff' }} display='inline-block'>Esporte</InputLabel>
-            <SportsSoccer fontSize="large" style={{ color: '#E8FC0F' }}/>
-            <Select
-              labelId="esporteLabel"
-              id="esporte"
-              value={esporte.value}
-              label="Esporte"
-              onChange={esporte.onChange}
-              displayEmpty
-            >
-              <MenuItem value={''}>Selecione o esporte</MenuItem>
-              <MenuItem value={'Futebol'}>Futebol</MenuItem>
-              <MenuItem value={'Basquete'}>Basquete</MenuItem>
-              <MenuItem value={'Volei'}>Volei</MenuItem>
-            </Select>
-          </FormControl>
-        </Box>
-
-        <Box backgroundColor='#1C1E1F'>
-          <InputLabel id="dataLabel" style={{ color: '#fff' }}>Data</InputLabel>
-          <CalendarToday fontSize="large" style={{ color: '#E8FC0F' }}/>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker
-              label="Data"
-              value={data.value}
-              onChange={data.onChange}
-              renderInput={(params) => <TextField {...params} />}
+      <Box pt={4} align='center'>
+        <Box display='flex' flexWrap='wrap' gap={1} maxWidth='1200px' alignItens='center'>
+          <FormCard>
+            <InputLabel id="localizacaoLabel" style={{ color: '#fff' }}>Localização</InputLabel>
+            <Place {...iconStyles}/>
+            <Input
+              labelId="localizacaoLabel"
+              id="localizacao"
+              type="text"
+              placeholder='Digite um endereço'
             />
-          </LocalizationProvider>
-        </Box>
+          </FormCard>
 
-        <Box backgroundColor='#1C1E1F'>
-          <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
-            <InputLabel id="intensidadeLabel" style={{ color: '#fff' }}>Intensidade</InputLabel>
-            <SignalCellularAlt fontSize="large"style={{ color: '#E8FC0F' }}/>
-            <Select
-              labelId="intensidadeLabel"
-              id="intensidade"
-              value={intensidade.value}
-              label="Intensidade"
-              onChange={intensidade.onChange}
-              displayEmpty
-            >
-              <MenuItem value={''}>Selecione a intensidade</MenuItem>
-              <MenuItem value={'Iniciante'}>Iniciante</MenuItem>
-              <MenuItem value={'Intermediário'}>Intermediário</MenuItem>
-              <MenuItem value={'Experiente'}>Experiente</MenuItem>
-            </Select>
-          </FormControl>
+          <FormCard>
+              <InputLabel id="esporteLabel" style={{ color: '#fff' }} display='inline-block'>Esporte</InputLabel>
+              <SportsSoccer {...iconStyles}/>
+              <FormControl>
+                <Select
+                  labelId="esporteLabel"
+                  id="esporte"
+                  value={esporte.value}
+                  label="Esporte"
+                  onChange={esporte.onChange}
+                  displayEmpty
+                >
+                  <MenuItem value={''}>Selecione o esporte</MenuItem>
+                  <MenuItem value={'Futebol'}>Futebol</MenuItem>
+                  <MenuItem value={'Basquete'}>Basquete</MenuItem>
+                  <MenuItem value={'Volei'}>Volei</MenuItem>
+                </Select>
+              </FormControl>
+          </FormCard>
+
+          <FormCard>
+            <InputLabel id="dataLabel" style={{ color: '#fff' }}>Data</InputLabel>
+            <CalendarToday {...iconStyles}/>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DatePicker
+                labelId="dataLabel"
+                label="Data"
+                value={data.value || null}
+                onChange={data.onChange}
+                renderInput={(params) => <TextField {...params} />}
+                color='#fff'
+              />
+            </LocalizationProvider>
+          </FormCard>
+
+          <FormCard>
+              <InputLabel id="intensidadeLabel" style={{ color: '#fff' }}>Intensidade</InputLabel>
+              <SignalCellularAlt {...iconStyles}/>
+              <FormControl>
+                <Select
+                  labelId="intensidadeLabel"
+                  id="intensidade"
+                  value={intensidade.value}
+                  label="Intensidade"
+                  onChange={intensidade.onChange}
+                  displayEmpty
+                >
+                  <MenuItem value={''}>Selecione a intensidade</MenuItem>
+                  <MenuItem value={'Iniciante'}>Iniciante</MenuItem>
+                  <MenuItem value={'Intermediário'}>Intermediário</MenuItem>
+                  <MenuItem value={'Experiente'}>Experiente</MenuItem>
+                </Select>
+              </FormControl>
+          </FormCard>
         </Box>
-        <Button>Criar</Button>
+        <Button align='right'>Criar</Button>
       </Box>
     </form>
   );
