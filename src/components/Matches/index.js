@@ -1,6 +1,6 @@
 import React from 'react';
 import useForm from '../Form/useForm';
-import Input from '@mui/material/Input';
+//import Input from '@mui/material/Input';
 import Button from '@mui/material/Button';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
@@ -14,17 +14,19 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { Place, SportsSoccer, CalendarToday, SignalCellularAlt } from '@mui/icons-material';
 
-const Matches = () => {
-  const endereco = useForm();
+const Matches = ({setMarker}) => {
+  const localizacao = useForm();
   const esporte = useForm();
   const data = useForm();
   const intensidade = useForm();
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (endereco.validate()) {
+    if(localizacao.validate() && esporte.validate() && data.validate() && intensidade.validate()) {
       console.log('Enviar');
-    } else {
+      setMarker(false);
+    }
+    else {
       console.log('Não enviar');
     }
   }
@@ -34,22 +36,24 @@ const Matches = () => {
       <Box py={4} align='center' backgroundColor='#343434'>
         <Box display='flex' flexWrap='wrap' gap={1} maxWidth='1200px' pb={1}>
           <FormCard>
-            <InputLabel id="localizacaoLabel" style={{ color: '#fff' }}>Localização</InputLabel>
+            <InputLabel style={{ color: '#fff' }}>Localização</InputLabel>
             <Place {...iconStyles}/> <br/>
-            <Input
-              labelId="localizacaoLabel"
-              id="localizacao"
-              type="text"
-              placeholder='Digite um endereço'
-            />
+            <FormControl sx={{ minWidth: 220 }}>
+              <TextField
+                id="localizacao"
+                variant="outlined"
+                placeholder='Digite um endereço'
+                value={localizacao.value}
+                onChange={(event) => localizacao.setValue(event.target.value)}
+              />
+            </FormControl>
           </FormCard>
 
           <FormCard>
-              <InputLabel id="esporteLabel" style={{ color: '#fff' }} display='inline-block'>Esporte</InputLabel>
+              <InputLabel style={{ color: '#fff' }} display='inline-block'>Esporte</InputLabel>
               <SportsSoccer {...iconStyles}/> <br/>
-              <FormControl>
+              <FormControl sx={{ minWidth: 220 }}>
                 <Select
-                  labelId="esporteLabel"
                   id="esporte"
                   value={esporte.value}
                   label="Esporte"
@@ -65,25 +69,25 @@ const Matches = () => {
           </FormCard>
 
           <FormCard>
-            <InputLabel id="dataLabel" style={{ color: '#fff' }}>Data</InputLabel>
+            <InputLabel style={{ color: '#fff' }}>Data</InputLabel>
             <CalendarToday {...iconStyles}/> <br/>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <LocalizationProvider dateAdapter={AdapterDayjs} sx={{ minWidth: 220 }}>
               <DatePicker
-                labelId="dataLabel"
                 label="Selecione a data"
                 value={data.value || null}
-                onChange={data.onChange}
+                onChange={(newValue) => {
+                  data.setValue(newValue);
+                }}
                 renderInput={(params) => <TextField {...params} />}
               />
             </LocalizationProvider>
           </FormCard>
 
           <FormCard>
-              <InputLabel id="intensidadeLabel" style={{ color: '#fff' }}>Intensidade</InputLabel>
+              <InputLabel style={{ color: '#fff' }}>Intensidade</InputLabel>
               <SignalCellularAlt {...iconStyles}/> <br/>
-              <FormControl>
+              <FormControl sx={{ minWidth: 220 }}>
                 <Select
-                  labelId="intensidadeLabel"
                   id="intensidade"
                   value={intensidade.value}
                   label="Intensidade"
@@ -102,6 +106,7 @@ const Matches = () => {
           variant='contained'
           size='large'
           style={{backgroundColor:'#E8FC0F', color:'#000'}}
+          onClick={handleSubmit}
         >Criar partida</Button>
       </Box>
     </form>
