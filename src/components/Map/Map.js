@@ -4,8 +4,10 @@ import {markers} from "../../db/markers";
 import CustomMarker from "../Marker/CustomMarker";
 
 const containerStyle = {
-    width: '720px',
-    height: '480px'
+    //width: '720px',
+    width: '100%',
+    height: '480px',
+    align:'center'
 };
 
 const Map = ({coords}) => {
