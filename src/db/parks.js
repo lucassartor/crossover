@@ -1,4 +1,4 @@
-export const markers = [
+export const parks = [
     {
         id: 1,
         name: 'Quadra 1',

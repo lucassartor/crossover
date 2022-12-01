@@ -1,17 +1,18 @@
 import React, {useCallback, useState} from 'react'
-import {GoogleMap, MarkerF, useJsApiLoader} from '@react-google-maps/api';
-import {markers} from "../../db/markers";
+import {GoogleMap, MarkerF, useJsApiLoader, OverlayView} from '@react-google-maps/api';
+import {parks} from "../../db/parks";
 import CustomMarker from "../Marker/CustomMarker";
 import mapStyle from './mapStyle';
 
 const containerStyle = {
   //width: '720px',
+  position: "relative",
   width: '100%',
-  height: '480px',
+  height: '720px',
   align:'center'
 };
 
-const Map = ({coords, setMatches}) => {
+const Map = ({coords, setMatches, setCurrentPark, setIsInfoBarActive}) => {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: "AIzaSyD9Qx5N762HtFu_ZMnUdrF0_3UyyHlcBio"
@@ -21,10 +22,7 @@ const Map = ({coords, setMatches}) => {
 
   const onLoad = useCallback(map => {
     const bounds = new window.google.maps.LatLngBounds(coords);
-    console.log(coords);
-
     map.fitBounds(bounds);
-
     setMap(map)
   }, [coords])
 
@@ -42,8 +40,8 @@ const Map = ({coords, setMatches}) => {
       options={{styles: mapStyle, disableDefaultUI: true, zoomControl: true}}
     >
       <MarkerF position={coords} icon={"https://i.ibb.co/SVfjkt6/Frame-204-1.png"} />
-      {markers.map( markerInfo =>
-        <CustomMarker onClick={() => setMatches(true)} position={markerInfo.position} {...markerInfo} />
+      {parks.map( parkInfo =>
+        <CustomMarker position={parkInfo.position} setIsInfoBarActive={setIsInfoBarActive} setCurrentPark={setCurrentPark} {...parkInfo} />
       )}
     </GoogleMap>
   ) : <>Carregando mapa...</>
