@@ -1,8 +1,8 @@
 import "./styles.css";
 
-function SidebarLink({ text, icon }) {
+function SidebarLink({ text, icon, setActivePage }) {
     return(
-        <div className="link">
+        <div className="link" onClick={() => setActivePage(text)}>
             <div className="icon">
                 {icon}
             </div>

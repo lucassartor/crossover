@@ -6,7 +6,6 @@ const CustomMarker = (props) => {
   const onMarkerClick = (event) => {
      props.setCurrentPark(props);
      props.setIsInfoBarActive(true);
-     console.log(props);
   }
 
   return (

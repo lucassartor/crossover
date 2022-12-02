@@ -34,7 +34,7 @@ const Map = ({coords, setMatches, setCurrentPark, setIsInfoBarActive}) => {
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={coords}
-      zoom={2}
+      zoom={15}
       onLoad={onLoad}
       onUnmount={onUnmount}
       options={{styles: mapStyle, disableDefaultUI: true, zoomControl: true}}
