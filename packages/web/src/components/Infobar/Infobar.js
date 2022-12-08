@@ -9,7 +9,7 @@ import {
     ListSubheader,
     Typography
 } from "@mui/material";
-import {ArrowBack, FavoriteRounded} from "@mui/icons-material";
+import {FavoriteRounded} from "@mui/icons-material";
 import Button from "@mui/material/Button";
 import React, {useEffect, useState} from "react";
 import "./styles.css";
@@ -24,6 +24,7 @@ const Infobar = (props) => {
             <CardMedia
                 component="img"
                 height="200"
+                width="200"
                 image={`${props.parkInfo.image}`}
                 alt="quadra"
             />
@@ -71,15 +72,13 @@ const Infobar = (props) => {
                 >Criar partida</Button>
                 {
                     props.favorites.has(props.parkInfo.id)
-                        ?
-                        <FavoriteRounded className="clicado" sx={{paddingLeft: 20}}
+                        ? <FavoriteRounded className="clicado"
                                          onClick={() => {
                                              setIsFavoriteClicked(false)
                                              props.favorites.delete(props.parkInfo.id)
                                              props.setFavorites(props.favorites)
                                          }}/>
-                        :
-                        <FavoriteRounded className="naoClicado" sx={{paddingLeft: 20}}
+                        : <FavoriteRounded className="naoClicado"
                                          onClick={() => {
                                              setIsFavoriteClicked(true)
                                              props.setFavorites(props.favorites.set(props.parkInfo.id, props.parkInfo))

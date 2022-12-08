@@ -11,6 +11,8 @@ import {
 } from "@mui/material";
 import {FavoriteRounded} from "@mui/icons-material";
 import React, {useState} from "react";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 
 const FavoritesPage = (props) => {
     const [isFavoriteClicked, setIsFavoriteClicked] = useState(true);
@@ -45,7 +47,28 @@ const FavoritesPage = (props) => {
                                 </ListItem>
                             ))}
                         </List>
-                        : <>Voce nao possui quadras favoritadas!</>
+                        : <div className="flex flex-col items-center justify-center h-full m-10">
+                            <img
+                                className="mb-4"
+                                src={require("../images/empty-favorite.png")}
+                                style={{height: 200}}
+                                alt="empty"
+                            />
+                            <h1 className="text-l font-bold text-white mb-2">
+                                Você não tem nenhuma quadra favorita ainda...
+                            </h1>
+                            <p className="text-sm text-[#BDBDBD] mb-5">
+                                Explore quadras e favorite as suas preferidas!
+                            </p>
+                            <Button
+                                variant="contained"
+                                size="large"
+                                style={{backgroundColor: "#E8FC0F", color: "#000"}}
+                                onClick={() => props.setActivePage("Mapa")}
+                            >
+                                Mapa
+                            </Button>
+                        </div>
                     }
 
                 </Typography>

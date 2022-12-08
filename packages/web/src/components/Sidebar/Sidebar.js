@@ -8,11 +8,6 @@ function Sidebar(props) {
   return (
     <div className="sidebar fixed">
       <SidebarLink
-        text="Home"
-        setActivePage={props.setActivePage}
-        icon={<HomeIcon />}
-      />
-      <SidebarLink
         text="Mapa"
         setActivePage={props.setActivePage}
         icon={<MapIcon />}
