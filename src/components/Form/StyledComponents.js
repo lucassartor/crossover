@@ -1,9 +1,20 @@
-import MuiBox from '@mui/material/Box';
-import styled from '@emotion/styled'
+import Box from '@mui/material/Box';
 
-export const Box = styled.MuiBox`
+const FormCard = (props) =>
+  <Box
+    p={2}
+    border={1}
+    display='inline-block'
+    backgroundColor='#2A2B2C'
+    style={{ aspectRatio: 4/3 }}
+    minWidth='200px'
+    flexGrow={1}
+    {...props}
+  />;
 
-`;
+const iconStyles = {
+  fontSize: "large",
+  style: { color: '#E8FC0F', padding:20 },
+}
 
-
-export default Box;
+export {FormCard, iconStyles};
