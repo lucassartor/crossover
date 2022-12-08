@@ -45,7 +45,7 @@ function App() {
                       <p className="text-sm text-[#BDBDBD] mb-5">
                         Explore quadras e favorite as suas preferidas!
                       </p>
-                      <button className="py-2 px-10 text-[#1C1E1F] bg-[#E8FC0F]">
+                      <button className="text-sm py-2 px-8 text-[#1C1E1F] bg-[#E8FC0F]">
                         Mapa
                       </button>
                     </div>
