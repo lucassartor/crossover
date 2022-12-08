@@ -10,7 +10,7 @@ import MapPage from "./pages/MapPage";
 
 function App() {
   const [activePage, setActivePage] = useState("Home");
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState(new Map());
 
   return (
     <>
