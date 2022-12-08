@@ -1,0 +1,29 @@
+.link{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    border-radius: .75rem;
+    margin-bottom: .5rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    &:hover, .active{
+        background-color: #343434;
+        color: #E8FC0F;
+        transition: color 100ms ease-out;
+    }
+
+    h2 {
+        font-weight: 500;
+        font-size: 1rem;
+    }
+
+    .icon{
+        font-size: small;
+        margin-left: .75rem;
+        margin-right: .75rem;
+    }
+}

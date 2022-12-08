@@ -1,4 +1,4 @@
-import "./styles.css";
+import "./styles.scss";
 import SidebarLink from "./SidebarLink/SidebarLink";
 import HomeIcon from "@mui/icons-material/HomeRounded";
 import MapIcon from '@mui/icons-material/FmdGoodRounded';

@@ -13,6 +13,8 @@ import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
 import {LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
 import {SportsSoccer, CalendarToday, SignalCellularAlt, AccessAlarm} from '@mui/icons-material';
 import {TimePicker} from "@mui/x-date-pickers";
+import { style } from '@mui/system';
+import './styles.scss'
 
 const Matches = ({setMatches, activeMatches, setActiveMatches, currentPark}) => {
     const esporte = useForm();
@@ -48,7 +50,7 @@ const Matches = ({setMatches, activeMatches, setActiveMatches, currentPark}) => 
             <Box py={4} align='center' backgroundColor='#343434'>
                 <Box display='flex' flexWrap='wrap' gap={1} maxWidth='1200px' pb={1}>
                     <FormCard>
-                        <InputLabel style={{color: '#fff'}} display='inline-block'>Esporte</InputLabel>
+                        <InputLabel className='input-label'>Esporte</InputLabel>
                         <SportsSoccer {...iconStyles}/> <br/>
                         <FormControl sx={{minWidth: 220}}>
                             <Select

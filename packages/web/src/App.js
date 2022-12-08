@@ -3,7 +3,7 @@ import CustomMap from "./components/Map/Map";
 import Matches from "./components/Matches";
 import {Grid} from "@mui/material";
 import Sidebar from "./components/Sidebar/Sidebar";
-import "./styles.css";
+import "./styles.scss";
 import Infobar from "./components/Infobar/Infobar";
 import FavoritesPage from "./pages/FavoritesPage";
 import MapPage from "./pages/MapPage";
