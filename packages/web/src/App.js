@@ -10,7 +10,7 @@ import MapPage from "./pages/MapPage";
 
 function App() {
     const [activePage, setActivePage] = useState("Home");
-    const [favorites, setFavorites] = useState([]);
+    const [favorites, setFavorites] = useState(new Map());
 
     return (
         <>
@@ -23,13 +23,7 @@ function App() {
                         {
                             "Home": <>Home</>,
                             "Mapa": <MapPage favorites={favorites} setFavorites={setFavorites}/>,
-                            "Favoritos":
-                                <>
-                                    {favorites.length > 0
-                                        ? <FavoritesPage favorites={favorites} setFavorites={setFavorites}/>
-                                        : <>Voce nao possui quadras favoritadas!</>
-                                    }
-                                </>
+                            "Favoritos": <FavoritesPage favorites={favorites} setFavorites={setFavorites}/>
                         }[activePage]
                     }
                 </Grid>

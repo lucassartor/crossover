@@ -1,0 +1,15 @@
+.clicado {
+    color: red;
+}
+
+.clicado:hover {
+    color: grey;
+}
+
+.naoClicado {
+    color: white;
+}
+
+.naoClicado:hover{
+    color:grey;
+}
