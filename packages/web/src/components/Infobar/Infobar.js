@@ -9,17 +9,22 @@ import {
     ListSubheader,
     Typography
 } from "@mui/material";
-import {ArrowBack, FavoriteRounded} from "@mui/icons-material";
+import {FavoriteRounded} from "@mui/icons-material";
 import Button from "@mui/material/Button";
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
+import "./styles.css";
 
 
 const Infobar = (props) => {
+
+    const [isFavoriteClicked, setIsFavoriteClicked] = useState(false);
+
     return (
         <Card sx={{maxWidth: 400, maxHeight: 720, backgroundColor: '#252525', color: '#fff'}}>
             <CardMedia
                 component="img"
                 height="200"
+                width="200"
                 image={`${props.parkInfo.image}`}
                 alt="quadra"
             />
@@ -65,8 +70,21 @@ const Infobar = (props) => {
                     style={{backgroundColor: '#E8FC0F', color: '#000'}}
                     onClick={() => props.setMatches(true)}
                 >Criar partida</Button>
-                <FavoriteRounded sx={{paddingLeft: 20}}
-                                 onClick={() => props.setFavorites([...props.favorites, props.parkInfo])}/>
+                {
+                    props.favorites.has(props.parkInfo.id)
+                        ? <FavoriteRounded className="clicado"
+                                         onClick={() => {
+                                             setIsFavoriteClicked(false)
+                                             props.favorites.delete(props.parkInfo.id)
+                                             props.setFavorites(props.favorites)
+                                         }}/>
+                        : <FavoriteRounded className="naoClicado"
+                                         onClick={() => {
+                                             setIsFavoriteClicked(true)
+                                             props.setFavorites(props.favorites.set(props.parkInfo.id, props.parkInfo))
+                                         }}/>
+                }
+
             </CardActions>
         </Card>
     );
